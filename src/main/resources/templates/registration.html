@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicover</title>
+</head>
+<h1 th:if="${info!=null}"
+    th:style="'color'"
+    th:text="${info}"></h1>
+<body>
+<div style="text-align: 'center'">
+    <form method="post" action="/entrance">
+        Numer karty pacienta: <input type="text" name="cardNumber"><br/>
+        Haslo: <input type="password" name="password"><br/>
+        <input type="submit" value="wyslij">
+
+
+    </form>
+
+</div>
+</body>
+</html>

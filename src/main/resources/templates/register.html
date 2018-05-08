@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+</head>
+<body>
+<div style="text-align: center;">
+
+    <h1 th:if="${info != null}" th:text="${info}"></h1>
+<!--gdy bedzie info nullem nie wyswietli sie naglowek-->
+    <form method="post" action="/register">
+        Login: <input type="text" name="login"> <br/>
+        Hasło: <input type="password" name="password"> <br/>
+        <input type="submit" value="Wyślij">
+    </form>
+</div>
+</body>
+</html>
