@@ -11,18 +11,18 @@
         th:style="'color: ' + ${isLoanAccepted ? 'green' : 'red'}"
         th:text="${isLoanAccepted ? #messages.msg('Calculator.accepted') : #messages.msg('Calculator.refused')}"></h1>
 
-    <form method="post" action="/calculator" th:object="${calculationForm}">
+    <form method="post" action="/calculator" th:object="${calculatorForm}">
 
         Loan amount: <input type="text" th:field="*{loanAmount}">
         <span th:if="${#fields.hasErrors('loanAmount')}" th:errors="*{loanAmount}"></span> <br/>
-        <!--Salary: <input type="text" th:field="*{salary}">-->
-        <!--<span th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></span> <br/>-->
+        Salary: <input type="text" th:field="*{salary}">
+        <span th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></span> <br/>
 
         Numbers of months: <input type="text" th:field="*{months}">
         <span th:if="${#fields.hasErrors('months')}" th:errors="*{months}"></span> <br/>
 
-        <!--Monthy expensys: <input type="text" th:field="*{expensys}">-->
-        <!--<span th:if="${#fields.hasErrors('expensys')}" th:errors="*{expensys}"></span> <br/>-->
+        Monthy expensys: <input type="text" th:field="*{expensys}">
+        <span th:if="${#fields.hasErrors('expensys')}" th:errors="*{expensys}"></span> <br/>
 
         <input type="submit" value="Wyślij">
     </form>
