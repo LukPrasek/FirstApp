@@ -9,10 +9,12 @@
 <body>
 <div style="text-align: 'center'">
     <form method="post" action="/entrance/login" th:object="${pacientForm}">
-        Numer karty pacienta: <input type="text" th:field="*{cardNumber}"><br/>
+        Numer karty pacienta: <input type="text" th:field="*{cardNumber}">
+        <span th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}"></span> <br/>
+        <br/>
         Haslo: <input type="password" th:field="*{password}"><br/>
+        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span> <br/>
         <input type="submit" value="wyslij">
-
 
     </form>
 

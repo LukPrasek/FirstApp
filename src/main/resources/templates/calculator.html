@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<div style="text-align: center;">
+
+    <h1 th:if="${isLoanAccepted != null}"
+        th:style="'color: ' + ${isLoanAccepted ? 'green' : 'red'}"
+        th:text="${isLoanAccepted ? #messages.msg('Calculator.accepted') : #messages.msg('Calculator.refused')}"></h1>
+
+    <form method="post" action="/calculator" th:object="${calculationForm}">
+
+        Loan amount: <input type="text" th:field="*{loanAmount}">
+        <span th:if="${#fields.hasErrors('loanAmount')}" th:errors="*{loanAmount}"></span> <br/>
+        <!--Salary: <input type="text" th:field="*{salary}">-->
+        <!--<span th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></span> <br/>-->
+
+        Numbers of months: <input type="text" th:field="*{months}">
+        <span th:if="${#fields.hasErrors('months')}" th:errors="*{months}"></span> <br/>
+
+        <!--Monthy expensys: <input type="text" th:field="*{expensys}">-->
+        <!--<span th:if="${#fields.hasErrors('expensys')}" th:errors="*{expensys}"></span> <br/>-->
+
+        <input type="submit" value="Wyślij">
+    </form>
+</div>
+</body>
+</html>

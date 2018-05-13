@@ -2,9 +2,11 @@ package pl.lukaszprasek.FirstApp.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.lukaszprasek.FirstApp.controllers.models.PacientForm;
 
+import javax.validation.Valid;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,7 +56,11 @@ public class ControllerHomework {
     }
 
     @PostMapping("/entrance/login")
-    public String register(@ModelAttribute PacientForm pacientForm, Model model) {
+    public String register(@ModelAttribute @Valid PacientForm pacientForm, BindingResult bindingResult,
+                           Model model) {
+        if (bindingResult.hasErrors()) {
+            return "loginToMed";
+        }
         Pattern pattern = Pattern.compile("[0-9]{6}");
         Matcher matcher = pattern.matcher(String.valueOf(pacientForm.getCardNumber()));
         if (!matcher.matches()) {

@@ -8,12 +8,14 @@
 <div style="text-align: center;">
 
     <h1 th:if="${isLoginCorrect != null}"
-        th:color="'color: ' + ${isLoginCorrect ? 'green' : 'red'}"
-        th:text="${isLoginCorrect ? 'Zalogwano' : 'Błędne dane'}"></h1>
+        th:style="'color: ' + ${isLoginCorrect ? 'green' : 'red'}"
+        th:text="${isLoginCorrect ? #messages.msg('LoginTemplate.loggedIn') : #messages.msg('LoginTemplate.badData')}"></h1>
 
     <form method="post" action="/login" th:object="${loginForm}">
-        Login: <input type="text" th:field="*{login}"> <br/>
-        Hasło: <input type="password" th:field="*{password}"> <br/>
+        Login: <input type="text" th:field="*{login}">
+        <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>  <br/>
+        Hasło: <input type="password" th:field="*{password}">
+        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span> <br/>
         <input type="submit" value="Wyślij">
     </form>
 </div>
