@@ -28,8 +28,8 @@
     </form>
 </div>
 <div style="text-align: center;">
-    <h3 th:if="${isLoanAccepted==true}" th:text="${installments}">
-    <!--th:text="${isLoanAccepted? #messages.msg('Calculator.installment') :#messages.msg('Calculator.installment') }">-->
+    <h3 th:if="${isLoanAccepted==true}">
+        Monthly installment: <span th:text="${installments}"></span>
 
     </h3>
 </div>
