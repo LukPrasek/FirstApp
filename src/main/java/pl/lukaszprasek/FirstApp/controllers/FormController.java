@@ -70,6 +70,10 @@ public class FormController {
         boolean isLoanAccepted = (calculatorForm.getLoanAmount() / calculatorForm.getMonths()) >
                 (0.3 * (calculatorForm.getSalary() - (calculatorForm.getExpenses())));
         model.addAttribute("isLoanAccepted", isLoanAccepted);
+        if (isLoanAccepted) {
+            double installments = calculatorForm.getLoanAmount() / calculatorForm.getMonths();
+            model.addAttribute("installments", installments);
+        }
 
         return "calculator";
     }

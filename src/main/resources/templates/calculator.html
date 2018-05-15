@@ -21,11 +21,17 @@
         Numbers of months: <input type="number" th:field="*{months}">
         <span th:if="${#fields.hasErrors('months')}" th:errors="*{months}"></span> <br/>
 
-        Monthy expenses: <input type="text" th:field="*{expenses}">
+        Monthly expenses: <input type="text" th:field="*{expenses}">
         <span th:if="${#fields.hasErrors('expenses')}" th:errors="*{expenses}"></span> <br/>
 
         <input type="submit" value="Submit">
     </form>
+</div>
+<div style="text-align: center;">
+    <h3 th:if="${isLoanAccepted==true}" th:text="${installments}">
+    <!--th:text="${isLoanAccepted? #messages.msg('Calculator.installment') :#messages.msg('Calculator.installment') }">-->
+
+    </h3>
 </div>
 </body>
 </html>
