@@ -1,63 +1,61 @@
 package pl.lukaszprasek.FirstApp.controllers.models;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.*;
 
 public class CalculatorForm {
 
-    @NotEmpty
-    @Size(max = 6)
-    //@Pattern(regexp = "[0-9]*")
-    private String loanAmount;
+    @NotNull
+    @Range(min = 0, max = 10000000)
+    @Digits(integer = 9, fraction = 2)
+    private double loanAmount;
 
-    @NotEmpty
-    @Size(max = 6)
- //   @Pattern(regexp = "[0-9]*")
-    private String salary;
+    @NotNull
+    @Range(min = 0, max = 10000000)
+    @Digits(integer = 6, fraction = 2)
+    private double salary;
 
-    @NotEmpty
-    @Size(max = 2)
-   // @Pattern(regexp = "[0-9][0-9]")
-    private String months;
+    @NotNull
+    @Range(min = 0, max = 360)
+    private int months;
 
-    @NotEmpty
-    @Size(max = 6)
-    //@Pattern(regexp = "[0-9]*")
-    private String expensys;
+    @NotNull
+    @Range(min = 0, max = 10000000)
+    @Digits(integer = 6, fraction = 2)
+    private double expenses;
 
-    public CalculatorForm() {
-    }
+    public CalculatorForm() {}
 
-    public String getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
-    public String getLoanAmount() {
+    public double getLoanAmount() {
         return loanAmount;
     }
 
-    public void setLoanAmount(String loanAmount) {
+    public void setLoanAmount(double loanAmount) {
         this.loanAmount = loanAmount;
     }
 
-    public String getMonths() {
+    public int getMonths() {
         return months;
     }
 
-    public void setMonths(String months) {
+    public void setMonths(int months) {
         this.months = months;
     }
 
-    public String getExpensys() {
-        return expensys;
+    public double getExpenses() {
+        return expenses;
     }
 
-    public void setExpensys(String expensys) {
-        this.expensys = expensys;
+    public void setExpenses(double expenses) {
+        this.expenses = expenses;
     }
 }

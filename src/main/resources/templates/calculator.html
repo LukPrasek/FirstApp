@@ -18,13 +18,13 @@
         Salary: <input type="text" th:field="*{salary}">
         <span th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></span> <br/>
 
-        Numbers of months: <input type="text" th:field="*{months}">
+        Numbers of months: <input type="number" th:field="*{months}">
         <span th:if="${#fields.hasErrors('months')}" th:errors="*{months}"></span> <br/>
 
-        Monthy expensys: <input type="text" th:field="*{expensys}">
-        <span th:if="${#fields.hasErrors('expensys')}" th:errors="*{expensys}"></span> <br/>
+        Monthy expenses: <input type="text" th:field="*{expenses}">
+        <span th:if="${#fields.hasErrors('expenses')}" th:errors="*{expenses}"></span> <br/>
 
-        <input type="submit" value="Wyślij">
+        <input type="submit" value="Submit">
     </form>
 </div>
 </body>
