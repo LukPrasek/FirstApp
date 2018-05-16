@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+    h1 {
+    background-color: lightblue;
+    text-align: center;
+    font-size: 14pt;
+}
+div {
+    background-color: lightblue;
+    text-align: center;
+    font-size: 14pt;
+}
+form {
+    background-color: yellow;
+    text-align: center;
+    font-weight: bold;
+    color: blue;
+}
+
+    </style>
+</head>
+
+<body>
+<h1 th:style="'color: ' + ${isLoanAccepted ? 'green' : 'red'}"
+    th:text="${isLoanAccepted ? #messages.msg('Calculator.accepted') : #messages.msg('Calculator.refused')}"></h1>
+<div th:if="${isLoanAccepted}">
+
+    <form method="get" action="/calculator" th:object="${calculatorForm}">
+
+        Loan amount:<br/>
+        <input type="text" th:field="*{loanAmount}"> <br/>
+
+        Salary:<br/>
+        <input type="text" th:field="*{salary}"><br/>
+
+        Numbers of months:<br/>
+        <input type="number" th:field="*{months}"><br/>
+
+        Monthly expenses:<br/>
+        <input type="text" th:field="*{expenses}"><br/>
+
+        Monthly installment:<br/>
+        <span th:text="${installments}"></span><br/>
+
+    </form>
+    <img th:src="@{loan.jpg}"/>
+</div>
+
+<p>
+    <img th:src="@{~/billing-app/resources//static/loan.jpg}"/>
+</p>
+
+</body>
+</html>

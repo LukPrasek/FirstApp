@@ -60,22 +60,37 @@ public class FormController {
 
     }
 
-    @PostMapping("/calculator")// do wysylania formularza
-
-    public String postCalculator(@ModelAttribute @Valid CalculatorForm calculatorForm, BindingResult bindingResult,
-                                 Model model) {
+    //    @PostMapping("/calculator")// do wysylania formularza
+//
+//    public String postCalculator(@ModelAttribute @Valid CalculatorForm calculatorForm, BindingResult bindingResult,
+//                                 Model model) {
+//        if (bindingResult.hasErrors()) {
+//            return "calculator";
+//        }
+//        boolean isLoanAccepted = ((calculatorForm.getLoanAmount() / calculatorForm.getMonths()) <
+//                (0.3 * (calculatorForm.getSalary() - calculatorForm.getExpenses())));
+//
+//        model.addAttribute("isLoanAccepted", isLoanAccepted);
+//        if (isLoanAccepted) {
+//            double installments = calculatorForm.getLoanAmount() / calculatorForm.getMonths();
+//            model.addAttribute("installments", installments);
+//        }
+//
+//        return "calculator";
+//    }
+    @RequestMapping(value = "/calculator", method = RequestMethod.POST)
+    public String submit( @ModelAttribute @Valid CalculatorForm calculatorForm,
+                          BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "calculator";
         }
-        boolean isLoanAccepted = (calculatorForm.getLoanAmount() / calculatorForm.getMonths()) >
+        boolean isLoanAccepted = (calculatorForm.getLoanAmount() / calculatorForm.getMonths()) <
                 (0.3 * (calculatorForm.getSalary() - (calculatorForm.getExpenses())));
         model.addAttribute("isLoanAccepted", isLoanAccepted);
         if (isLoanAccepted) {
             double installments = calculatorForm.getLoanAmount() / calculatorForm.getMonths();
             model.addAttribute("installments", installments);
         }
-
-        return "calculator";
+        return "calculatorAnswer";
     }
-
 }
