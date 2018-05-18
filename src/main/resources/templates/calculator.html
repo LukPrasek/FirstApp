@@ -13,13 +13,11 @@
        text-align: center;
         background-color: blue;
        }
-
-
     </style>
 </head>
 <body>
 <div>
-    <h1> Provide the data</h1>
+    <h1 th:text="#{welcome.message}"></h1>
     <!--<h1 th:if="${isLoanAccepted != null}"-->
     <!--th:style="'color: ' + ${isLoanAccepted ? 'green' : 'red'}"-->
     <!--th:text="${isLoanAccepted ? #messages.msg('Calculator.accepted') : #messages.msg('Calculator.refused')}"></h1>-->
